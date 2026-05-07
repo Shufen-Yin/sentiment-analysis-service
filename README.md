@@ -1,4 +1,4 @@
-# Sentiment Analysis Service (MLOps Assignment)
+# Sentiment Analysis Service (MLOps)
 
 ## Project Overview
 This is a microservice-based Sentiment Analysis application built using **Flask**. It integrates a pre-trained **Hugging Face Transformer model** for NLP tasks. The project demonstrates a complete MLOps lifecycle, including containerization with **Docker** and automated **CI/CD pipelines** via GitHub Actions.
