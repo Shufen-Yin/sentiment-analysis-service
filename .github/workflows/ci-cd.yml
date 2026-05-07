@@ -1,25 +1,23 @@
-name: Docker Cloud Build Test
+name: Docker Build Validation
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build-and-test:
+  test-and-build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-
-    - name: Build Docker Image (In the Cloud)
+    - name: Build Docker Image
       run: |
         docker build -t sentiment-service:latest .
-
-    - name: Test the Model
+        
+    - name: Run Test Container
       run: |
-        docker run -d -p 5000:5000 --name my-running-app sentiment-service:latest
-        sleep 15
+        docker run -d -p 5000:5000 --name test-app sentiment-service:latest
+        sleep 10
         curl http://localhost:5000/
+        echo "Docker environment verified successfully!"
